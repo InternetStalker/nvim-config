@@ -18,15 +18,15 @@ set tabstop=2
 set expandtab
 set shiftwidth=2
 
-inoremap jk <esc>
+inoremap <esc>
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'L3MON4D3/LuaSnip'
+Plug 'neovim/nvim-lspconfig' "конфигуратор lsp сервера
+Plug 'hrsh7th/nvim-cmp' "авто дополнение
+Plug 'hrsh7th/cmp-nvim-lsp' "а это что не знаю
+Plug 'saadparwaiz1/cmp_luasnip' "авто дополнение для lua snip-еттов. На удаление при переводе на lua
+Plug 'L3MON43/LuaSnip'
 
 " color schemas
 Plug 'morhetz/gruvbox'  " colorscheme gruvbox
@@ -114,7 +114,7 @@ local async = require "plenary.async"
 local cmp = require 'cmp'
 cmp.setup {
   completion = {
-    autocomplete = false
+    autocomplete = false 
   },
   snippet = {
     expand = function(args)
@@ -245,7 +245,7 @@ require'lspconfig'.stylelint_lsp.setup{
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'rust_analyzer' }
+local servers = { 'pyright' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -287,7 +287,7 @@ function! s:Bclose(bang, buffer)
   else
     let btarget = bufnr(a:buffer)
   endif
-  if btarget < 0
+  if btarget < 0true
     call s:Warn('No matching buffer for '.a:buffer)
     return
   endif
